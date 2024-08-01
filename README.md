@@ -24,5 +24,18 @@ npm run build
 npm run lint
 ```
 
+## Local Usaage
+
+### Backend
+```
+flask run #get flask server running and serving up json content from python, through axios (http://localhost:5000/feeds)
+```
+
+### Frontend
+```
+npm run serve #to get vue serving up web content that reads from the json content that the backend python provides (http://localhost/8085/feeds)
+```
+
+
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
