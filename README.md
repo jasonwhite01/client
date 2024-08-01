@@ -1,5 +1,9 @@
 # client
 
+This project is a simple rssfeed reader for postcasts from NPR's RSS service
+
+The purpose of this project is strictly learning how to put together a vue.js front end with a python backend, connected via Axios
+
 ## Project setup
 ```
 npm install
