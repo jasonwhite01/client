@@ -28,12 +28,12 @@ npm run lint
 
 ### Backend
 ```
-flask run #get flask server running and serving up json content from python, through axios (http://localhost:5000/feeds)
+flask run #get flask server running and serving up json content from python (http://localhost:5000/feeds)
 ```
 
 ### Frontend
 ```
-npm run serve #to get vue serving up web content that reads from the json content that the backend python provides (http://localhost/8085/feeds)
+npm run serve #to get vue serving up web content that reads from the json content that the backend python provides via axios (http://localhost/8085/feeds)
 ```
 
 
