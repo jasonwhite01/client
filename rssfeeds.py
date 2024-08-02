@@ -12,19 +12,20 @@ def saveFeed(title, description, podcasturl):
         # Create table if it doesn't exist yet
         cursor.execute('CREATE TABLE IF NOT EXISTS feed(feed_id INTEGER PRIMARY KEY, feed_headline TEXT NOT NULL, feed_description TEXT NOT NULL, feed_podcast_url TEXT NOT NULL);')
 
-        sqliteConnection.commit
+        sqliteConnection.commit()
 
         # Write a query and execute it with cursor
         print('title to persist: ' + title)
         cursor.execute('INSERT INTO FEED (feed_headline, feed_description, feed_podcast_url) VALUES (?,?,?)', (title, description, podcasturl))
 
-        sqliteConnection.commit
+        sqliteConnection.commit()
 
-        cursor.execute('select * from feeds;')
+        cursor.execute('select * from feed;')
 
         records = cursor.fetchall()    
 
-        print('records: ' + records)
+        for row in records:
+            print("title: ", row[1])
     
         # Close the cursor
         cursor.close()

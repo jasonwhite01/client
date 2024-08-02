@@ -13,14 +13,14 @@ try:
     # cursor.execute(query)
     cursor.execute('CREATE TABLE IF NOT EXISTS feed(feed_id INTEGER PRIMARY KEY, feed_headline TEXT NOT NULL, feed_description TEXT NOT NULL, feed_podcast_url TEXT NOT NULL);')
 
-    sqliteConnection.commit
+    sqliteConnection.commit()
 
     a='a'
     b='b'
     c='c'
     cursor.execute('INSERT INTO FEED (feed_headline, feed_description, feed_podcast_url) VALUES (?,?,?)', (a,b,c))
 
-    sqliteConnection.commit
+    sqliteConnection.commit()
  
     cursor.execute('select * from feed;')
 
@@ -30,11 +30,6 @@ try:
  
     # Close the cursor
     cursor.close()
-
-    sqliteConnection.commit
-
-    sqliteConnection.close()
-    print('SQLite Connection closed')
  
 # Handle errors
 except sqlite3.Error as error:
