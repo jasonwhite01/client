@@ -1,4 +1,5 @@
 import sqlite3
+import json
  
 def saveFeed(title, description, podcasturl):
 
@@ -47,19 +48,31 @@ def getSavedFeeds():
     try:
     
         # Connect to DB and create a cursor
-        sqliteConnection = sqlite3.connect('/Users/jasonwhite/Documents/development/python/client/feeds.db')
+        sqliteConnection = sqlite3.connect('feeds.db')
         cursor = sqliteConnection.cursor()
         print('DB Init')
     
-        cursor.execute('select * from feeds;')
+        cursor.execute('select feed_headline, feed_description, feed_podcast_url from feed;')
 
         records = cursor.fetchall()    
+
+        #convert returned records to json like the front end is expecting
+        result = []
+        for record in records:
+            print("processing record.")
+            d = {}
+            for i, col in enumerate(cursor.description):
+                d[col[0]] = record[i]
+            result.append(d)
+
+        # Convert the list of dictionaries to JSON and print it
+        json_result = json.dumps(result)
+        print(json_result)
+
         # Close the cursor
         cursor.close()
 
-        print(records)
-
-        return records
+        return json_result
     
     # Handle errors
     except sqlite3.Error as error:

@@ -39,7 +39,7 @@ def saved_feeds():
         return '--- post ---'
     if request.method=='GET':
         savedFeeds = getSavedFeeds()
-        print('savedFeeds: ' + savedFeeds)
+        print(''.join(str(x) for x in savedFeeds))
         return savedFeeds
 
 if __name__ == '__main__':
