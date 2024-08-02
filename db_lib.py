@@ -8,12 +8,14 @@ try:
     print('DB Init')
  
     # Write a query and execute it with cursor
-    query = 'select sqlite_version();'
-    cursor.execute(query)
+    #query = 'select sqlite_version();'
+    # cursor.execute('select count(*) from feed;')
+    # cursor.execute(query)
+    cursor.execute('CREATE TABLE IF NOT EXISTS feed(feed_id INTEGER PRIMARY KEY, feed_headline TEXT NOT NULL, feed_description TEXT NOT NULL, feed_podcast_url TEXT NOT NULL);')
  
     # Fetch and output result
-    result = cursor.fetchall()
-    print('SQLite Version is {}'.format(result))
+    # result = cursor.fetchall()
+    # print('SQLite Version is {}'.format(result))
  
     # Close the cursor
     cursor.close()
@@ -21,7 +23,7 @@ try:
 # Handle errors
 except sqlite3.Error as error:
     print('Error occurred - ', error)
- 
+
 # Close DB Connection irrespective of success
 # or failure
 finally:

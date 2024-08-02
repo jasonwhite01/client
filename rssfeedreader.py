@@ -11,8 +11,6 @@ soup = BeautifulSoup(resp.content, features="xml")
 
 items = soup.find_all('item')
 
-# print(len(items))
-
 news_items = [] #array
 
 for item in items:

@@ -13,6 +13,7 @@
                 <p><span v-html="rs.description"></span></p>
                 <p><a :href = "rs.podcasturl"><img src="../assets/podcast.png" alt="Girl in a jacket" width="30" height="20"/></a></p>
               </td>
+              <td><button @click='saveFeed(rs.title, rs.description, rs.podcasturl)'>Save</button></td>
             </tr>
           </tbody>
         </table>
@@ -43,6 +44,22 @@ export default {
           console.error(error);
         });
     },
+    saveFeed(feed_title, feed_description, feed_podcasturl){
+      axios({
+        baseURL: 'http://localhost:5000',
+        url: '/feeds',
+        method: 'post',
+        data: {
+          title: feed_title,
+          description: feed_description,
+          podcasturl: feed_podcasturl
+        }
+      }).then(res=>{
+              console.log(res);
+      }).catch(err=>{
+          console.log(err);
+      })
+    }
   },
   created() {
     this.getFeeds();
